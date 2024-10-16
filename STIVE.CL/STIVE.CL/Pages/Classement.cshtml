@@ -1,0 +1,37 @@
+@page
+@model STIVE.CL.Pages.ClassementModel
+
+@{
+    ViewData["Title"] = "Classement";
+}
+
+<div class="text-center" xmlns="http://www.w3.org/1999/html">
+    <div class="image-container position-relative pt-5">
+        <img src="image/Table.png" class="img-fluid" alt="Livre" style="width: 100%;"/>
+        <div class="position-absolute overlay-div" style="top: 12%; left: 6%; width: 87%; height: 82%;">
+            <p class="text-decoration-underline">Tableau des meilleurs vendeurs</p>
+            <br/>
+            <table class="text-center w-100">
+                <thead>
+                <th>Classement</th>
+                <th>Pseudo</th>
+                <th>Nombre de gold</th>
+                </thead>
+                <tbody>
+                @{
+                    int rank = 1;
+                    @foreach (var user in Model.Users)
+                    {
+                        <tr>
+                            <td>@rank</td>
+                            <td>@user.Name</td>
+                            <td>@user.Gold</td>
+                        </tr>
+                        rank++;
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

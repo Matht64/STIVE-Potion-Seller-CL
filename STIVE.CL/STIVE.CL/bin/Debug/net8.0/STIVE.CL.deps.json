@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "STIVE.CL/1.0.0": {
+        "runtime": {
+          "STIVE.CL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "STIVE.CL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

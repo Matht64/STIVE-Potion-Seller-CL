@@ -1,0 +1,35 @@
+@page
+@model STIVE.CL.Pages.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="text-center" xmlns="http://www.w3.org/1999/html">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="UserRegisterDto.Name"></label>
+            <input asp-for="UserRegisterDto.Name" class="form-control"/>
+            <span asp-validation-for="UserRegisterDto.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserRegisterDto.Email"></label>
+            <input asp-for="UserRegisterDto.Email" class="form-control"/>
+            <span asp-validation-for="UserRegisterDto.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserRegisterDto.Tel"></label>
+            <input asp-for="UserRegisterDto.Tel" class="form-control"/>
+            <span asp-validation-for="UserRegisterDto.Tel" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserRegisterDto.Password"></label>
+            <input asp-for="UserRegisterDto.Password" class="form-control"/>
+            <span asp-validation-for="UserRegisterDto.Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <div>
+        <a asp-page="/login">Déjà un compte ? Connectez vous ici !</a>
+    </div>
+</div>

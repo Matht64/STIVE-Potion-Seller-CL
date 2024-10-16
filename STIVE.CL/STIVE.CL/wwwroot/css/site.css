@@ -1,0 +1,71 @@
+html {
+  font-size: large;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: x-large;
+  }
+}
+
+@media (min-width: 576px) {
+  ul {
+    height: 100px;
+  }
+  .nav-link{
+    padding-bottom: 0 !important;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-image: url("../image/Background.png");
+  font-family: "IM Fell English SC", serif;
+}
+
+p {
+  font-size: 44px;
+}
+
+.button {
+  display: inline-block;
+  padding: 20px 50px;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.75);
+  background: linear-gradient(145deg, #d4af37, #c29e1d);
+  border: 3px solid #2a4d14;
+  border-radius: 20px;
+  box-shadow: 0 5px 0 #2a4d14, 0 10px 15px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #2a4d14, 0 12px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(145deg, #c29e1d, #d4af37);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #2a4d14, 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1200px) {
+  p {
+    font-size: 32px;
+  }
+  .button {
+    font-size: 22px;
+  }
+}
