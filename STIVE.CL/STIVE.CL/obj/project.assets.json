@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/terrygyselings/RiderProjects/STIVE.CL/STIVE.CL/STIVE.CL.csproj",
+      "projectUniqueName": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/STIVE.CL.csproj",
       "projectName": "STIVE.CL",
-      "projectPath": "/Users/terrygyselings/RiderProjects/STIVE.CL/STIVE.CL/STIVE.CL.csproj",
+      "projectPath": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/STIVE.CL.csproj",
       "packagesPath": "/Users/terrygyselings/.nuget/packages/",
-      "outputPath": "/Users/terrygyselings/RiderProjects/STIVE.CL/STIVE.CL/obj/",
+      "outputPath": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/terrygyselings/.nuget/NuGet/NuGet.Config"
