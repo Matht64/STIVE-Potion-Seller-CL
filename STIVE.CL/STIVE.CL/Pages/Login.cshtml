@@ -6,19 +6,24 @@
 }
 
 <div class="text-center" xmlns="http://www.w3.org/1999/html">
-    <form method="post">
-        <div>
-            <label asp-for="UserLoginDto.Email"></label>
-            <input asp-for="UserLoginDto.Email"/>
-            <span asp-validation-for="UserLoginDto.Email"></span>
+    <div class="image-container position-relative pt-5">
+        <img src="image/PaperRectangle1.png" class="img-fluid" alt="Livre" style="width: 80%; height: fit-content"/>
+        <div class="position-absolute overlay-div align-content-center" style="top: 18%; left: 10%; width: 81%; height: auto">
+            <form method="post" class="w-100 d-flex flex-column align-items-center">
+                <div class="form-group w-75 mb-2">
+                    <label asp-for="UserLoginDto.Email">Email</label>
+                    <span asp-validation-for="UserLoginDto.Email" class="text-danger"></span>
+                    <input asp-for="UserLoginDto.Email" class="form-control"/>
+                </div>
+                <div class="form-group w-75 mb-2">
+                    <label asp-for="UserLoginDto.Password">Mot de passe</label>
+                    <span asp-validation-for="UserLoginDto.Password" class="text-danger"></span>
+                    <input asp-for="UserLoginDto.Password" type="password" class="form-control"/>
+                </div>
+                <button type="submit" class="button m-2">Se connecter</button>
+            </form>
         </div>
-        <div>
-            <label asp-for="UserLoginDto.Password"></label>
-            <input asp-for="UserLoginDto.Password" type="password"/>
-            <span asp-validation-for="UserLoginDto.Password"></span>
-        </div>
-        <button type="submit">Se connecter</button>
-    </form>
+    </div>
 </div>
 
 @section Scripts
