@@ -89,3 +89,13 @@
 /Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/obj/Debug/net8.0/STIVE.CL.pdb
 /Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/obj/Debug/net8.0/STIVE.CL.genruntimeconfig.cache
 /Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/obj/Debug/net8.0/ref/STIVE.CL.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/obj/Debug/net8.0/STIVE.CL.csproj.AssemblyReference.cache
+/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/obj/Debug/net8.0/STIVE.CL.csproj.Up2Date

@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "c8lzZjWUMwE=",
+  "dgSpecHash": "rDROCD2Modw=",
   "success": true,
   "projectFilePath": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/STIVE.CL.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/terrygyselings/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.11/microsoft.aspnetcore.authentication.jwtbearer.8.0.11.nupkg.sha512",
+    "/Users/terrygyselings/.nuget/packages/microsoft.identitymodel.abstractions/8.3.0/microsoft.identitymodel.abstractions.8.3.0.nupkg.sha512",
+    "/Users/terrygyselings/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.3.0/microsoft.identitymodel.jsonwebtokens.8.3.0.nupkg.sha512",
+    "/Users/terrygyselings/.nuget/packages/microsoft.identitymodel.logging/8.3.0/microsoft.identitymodel.logging.8.3.0.nupkg.sha512",
+    "/Users/terrygyselings/.nuget/packages/microsoft.identitymodel.protocols/7.1.2/microsoft.identitymodel.protocols.7.1.2.nupkg.sha512",
+    "/Users/terrygyselings/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/7.1.2/microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
+    "/Users/terrygyselings/.nuget/packages/microsoft.identitymodel.tokens/8.3.0/microsoft.identitymodel.tokens.8.3.0.nupkg.sha512",
+    "/Users/terrygyselings/.nuget/packages/system.identitymodel.tokens.jwt/8.3.0/system.identitymodel.tokens.jwt.8.3.0.nupkg.sha512"
+  ],
   "logs": []
 }

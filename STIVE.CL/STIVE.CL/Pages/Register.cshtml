@@ -7,13 +7,13 @@
 
 <div class="text-center" xmlns="http://www.w3.org/1999/html">
     <div class="image-container position-relative pt-5">
-        <img src="image/PaperRectangle1.png" class="img-fluid" alt="Livre" style="width: 80%; height: fit-content"/>
+        <img src="image/PaperRectangle1.png" class="img-fluid" alt="Livre" style="width: 80%; height: 830px"/>
         <div class="position-absolute overlay-div align-content-center" style="top: 18%; left: 10%; width: 81%; height: auto">
             <form method="post" class="w-100 d-flex flex-column align-items-center">
                 <div class="form-group w-75 mb-2">
-                    <label asp-for="UserRegisterDto.Name">Pseudo</label>
-                    <span asp-validation-for="UserRegisterDto.Name" class="text-danger"></span>
-                    <input asp-for="UserRegisterDto.Name" class="form-control"/>
+                    <label asp-for="UserRegisterDto.UserName">Pseudo</label>
+                    <span asp-validation-for="UserRegisterDto.UserName" class="text-danger"></span>
+                    <input asp-for="UserRegisterDto.UserName" class="form-control"/>
                 </div>
                 <div class="form-group w-75 mb-2">
                     <label asp-for="UserRegisterDto.Email">Email</label>
@@ -21,14 +21,19 @@
                     <input asp-for="UserRegisterDto.Email" class="form-control"/>
                 </div>
                 <div class="form-group w-75 mb-2">
-                    <label asp-for="UserRegisterDto.Tel">Téléphone</label>
-                    <span asp-validation-for="UserRegisterDto.Tel" class="text-danger"></span>
-                    <input asp-for="UserRegisterDto.Tel" class="form-control"/>
+                    <label asp-for="UserRegisterDto.PhoneNumber">Téléphone</label>
+                    <span asp-validation-for="UserRegisterDto.PhoneNumber" class="text-danger"></span>
+                    <input asp-for="UserRegisterDto.PhoneNumber" class="form-control"/>
                 </div>
                 <div class="form-group w-75 mb-2">
                     <label asp-for="UserRegisterDto.Password">Mot de passe</label>
                     <span asp-validation-for="UserRegisterDto.Password" class="text-danger"></span>
-                    <input asp-for="UserRegisterDto.Password" class="form-control"/>
+                    <input asp-for="UserRegisterDto.Password" class="form-control" type="password"/>
+                </div>
+                <div class="form-group w-75 mb-2">
+                    <label asp-for="UserRegisterDto.ConfirmPassword">Confirmez le mot de passe</label>
+                    <span asp-validation-for="UserRegisterDto.ConfirmPassword" class="text-danger"></span>
+                    <input asp-for="UserRegisterDto.ConfirmPassword" class="form-control" type="password" />
                 </div>
                 <button type="submit" class="button m-2">Register</button>
                 <div>

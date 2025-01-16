@@ -1,14 +1,8 @@
 html {
-  font-size: large;
+  font-size: x-large;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: x-large;
-  }
-}
-
-@media (min-width: 576px) {
+@media (min-width: 992px) {
   ul {
     height: 100px;
   }
@@ -49,6 +43,11 @@ p {
   transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
 }
 
+.button-small {
+  padding: 10px 30px;
+  font-size: 20px;
+}
+
 .button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 0 #2a4d14, 0 12px 20px rgba(0, 0, 0, 0.4);
@@ -69,3 +68,8 @@ p {
     font-size: 22px;
   }
 }
+
+/*
+.overlay-div{
+  background-color: red;
+}*/

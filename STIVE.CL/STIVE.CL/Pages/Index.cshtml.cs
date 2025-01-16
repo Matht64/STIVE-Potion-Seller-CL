@@ -19,7 +19,7 @@ public class IndexModel : PageModel
     
     public async Task OnGetAsync()
     {
-        HttpResponseMessage response = await _httpClient.GetAsync("http://localhost:5294/User/count");
+        HttpResponseMessage response = await _httpClient.GetAsync("http://localhost:5294/api/User/count");
         if (response.IsSuccessStatusCode)
         {
             var jsonResponse = await response.Content.ReadAsStringAsync();

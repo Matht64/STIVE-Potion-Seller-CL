@@ -11,41 +11,47 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1 d-flex justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent"aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+            <ul class="navbar-nav me-auto ms-auto d-flex w-75">
+                <div class="navbar-left d-lg-flex justify-content-lg-end w-100">
                     <li class="nav-item align-content-end">
                         <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Jeu" ? "active" : "")" asp-area="" asp-page="/Jeu">Le jeu</a>
                     </li>
                     <li class="nav-item align-content-end">
                         <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Classement" ? "active" : "")" asp-area="" asp-page="/Classement">Classement</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="@(ViewContext.RouteData.Values["page"].ToString() == "/Index" ? "active" : "")" id="homebutton" asp-area="" asp-page="/Index"><img src="image/Logo.png" alt="Logo" height="200"/></a>
-                    </li>
-                    <li class="nav-item align-content-end">
-                        <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Boutique" ? "active" : "")" asp-area="" asp-page="/Boutique">Boutique</a>
-                    </li>
-                    <li class="nav-item align-content-end">
-                        <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Register" ? "active" : "")" asp-area="" asp-page="/Register">Register</a>
-                    </li>
-                </ul>
-            </div>
+                </div>
+                <li class="nav-item align-items-start">
+                    <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Index" ? "active" : "")" id="homebutton" asp-area="" asp-page="/Index">
+                        <img src="image/Logo.png" alt="Logo" class="logo" height="200">
+                    </a>
+                </li>
+                <div class="navbar-right d-lg-flex justify-content-lg-between w-100">
+                    <div class="navbar-right-left d-lg-flex justify-content-start">
+                        <li class="nav-item align-content-end">
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Boutique" ? "active" : "")" asp-area="" asp-page="/Boutique">Boutique</a>
+                        </li>
+                        <li class="nav-item align-content-end">
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Admin" ? "active" : "")" asp-area="" asp-page="/Admin">Admin</a>
+                        </li>
+                    </div>
+                    <div class="navbar-right-right justify-content-lg-end align-content-end">
+                        <a class="btn btn-outline-light" asp-page="/Login">Connexion</a>
+                    </div>
+                </div>
+            </ul>
         </div>
     </nav>
-
 </header>
 <div class="container">
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 </div>
-
 <footer class="border-top footer text-muted bg-dark">
     <div class="container">
         &copy; 2024 - Stive Potion Seller - <a asp-area="" asp-page="/Privacy">Privacy</a>
@@ -61,7 +67,7 @@
         const originalLogoHTML = logoItem.innerHTML;
         const togglerText = 'Home';
         function updateLogo() {
-            if (window.innerWidth < 576) {
+            if (window.innerWidth < 992) {
                 logoItem.innerHTML = togglerText;
                 logoItem.classList.add("nav-link");
             } else {

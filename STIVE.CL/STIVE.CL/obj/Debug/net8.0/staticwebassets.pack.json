@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets/image/Mage.png"
     },
     {
+      "Id": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/PageAccueil.png",
+      "PackagePath": "staticwebassets/image/PageAccueil.png"
+    },
+    {
       "Id": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/PaperCarre.png",
       "PackagePath": "staticwebassets/image/PaperCarre.png"
     },

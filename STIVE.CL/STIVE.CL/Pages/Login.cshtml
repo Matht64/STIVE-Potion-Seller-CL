@@ -11,17 +11,24 @@
         <div class="position-absolute overlay-div align-content-center" style="top: 18%; left: 10%; width: 81%; height: auto">
             <form method="post" class="w-100 d-flex flex-column align-items-center">
                 <div class="form-group w-75 mb-2">
-                    <label asp-for="UserLoginDto.Email">Email</label>
-                    <span asp-validation-for="UserLoginDto.Email" class="text-danger"></span>
-                    <input asp-for="UserLoginDto.Email" class="form-control"/>
+                    <label asp-for="userLoginDto.UserName">Identifiant</label>
+                    <span asp-validation-for="userLoginDto.UserName" class="text-danger"></span>
+                    <input asp-for="userLoginDto.UserName" class="form-control"/>
                 </div>
                 <div class="form-group w-75 mb-2">
-                    <label asp-for="UserLoginDto.Password">Mot de passe</label>
-                    <span asp-validation-for="UserLoginDto.Password" class="text-danger"></span>
-                    <input asp-for="UserLoginDto.Password" type="password" class="form-control"/>
+                    <label asp-for="userLoginDto.Password">Mot de passe</label>
+                    <span asp-validation-for="userLoginDto.Password" class="text-danger"></span>
+                    <input asp-for="userLoginDto.Password" type="password" class="form-control"/>
                 </div>
                 <button type="submit" class="button m-2">Se connecter</button>
+                <div>
+                    <a asp-page="/register">Vous n'avez pas de compte ? Inscrivez-vous ICI !</a>
+                </div>
             </form>
+            @if (Model.ErrorMessage != null)
+            {
+            <p style="color:red;">@Model.ErrorMessage</p>
+            }
         </div>
     </div>
 </div>

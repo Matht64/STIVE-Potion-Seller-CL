@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9ITEQJLRc6xo9myVsnYMq22KDJemFwZLFC7M6x6ZAmo=",
+  "Hash": "4mP6qlgxrkZ5poVGFegvzTUaQhD2zosHmeIU1FQAFx8=",
   "Source": "STIVE.CL",
   "BasePath": "_content/STIVE.CL",
   "Mode": "Default",
@@ -167,6 +167,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/image/Mage.png"
+    },
+    {
+      "Identity": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/PageAccueil.png",
+      "SourceId": "STIVE.CL",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/",
+      "BasePath": "_content/STIVE.CL",
+      "RelativePath": "image/PageAccueil.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/image/PageAccueil.png"
     },
     {
       "Identity": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/PaperCarre.png",
