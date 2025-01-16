@@ -18,7 +18,7 @@ public class ClassementModel : PageModel
     
     public async Task OnGetAsync()
     {
-        HttpResponseMessage response = await _httpClient.GetAsync("http://localhost:5294/User/classement");
+        HttpResponseMessage response = await _httpClient.GetAsync("http://localhost:5294/api/User/getUserGold");
         if (response.IsSuccessStatusCode)
         {
             var jsonResponse = await response.Content.ReadAsStringAsync();
@@ -36,7 +36,7 @@ public class ClassementModel : PageModel
 
     public class UserGold
     {
-        public string Name { get; set; }
+        public string UserName { get; set; }
         public int Gold { get; set; }
     }
 }
