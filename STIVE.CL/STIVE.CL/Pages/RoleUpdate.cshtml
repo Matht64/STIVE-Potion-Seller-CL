@@ -1,0 +1,22 @@
+@page
+@model STIVE.CL.Pages.RoleUpdateModel
+
+@{
+ViewData["Title"] = "Modifier le rôle";
+}
+
+<h1>Modifier le rôle</h1>
+
+<div id="roleFormContainer">
+    <form method="post">
+        <input type="hidden" asp-for="Role.RoleId" />
+
+        <div class="form-group">
+            <label asp-for="Role.RoleName"></label>
+            <input asp-for="Role.RoleName" class="form-control" />
+            <span asp-validation-for="Role.RoleName" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+</div>
