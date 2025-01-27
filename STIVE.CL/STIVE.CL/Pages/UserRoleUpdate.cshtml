@@ -1,0 +1,29 @@
+@page
+@using STIVE.CL.Pages
+@model STIVE.CL.Pages.UserRoleUpdateModel
+
+@{
+    ViewData["Title"] = "Modifier les rôles de l'utilisateur";
+}
+
+<h1>Modifier le rôle de l'utilisateur</h1>
+
+<div>
+    <p>Rôles actuels : @string.Join(", ", Model.Roles ?? new List<string>())</p>
+</div>
+
+<form method="post" asp-page-handler="AssignAdmin" class="d-inline">
+    <input type="hidden" asp-for="Id" />
+    @if (!Model.HasAdminRole)
+    {
+        <button type="submit" class="btn btn-success">Assigner le rôle Admin</button>
+    }
+</form>
+
+<form method="post" asp-page-handler="RemoveAdmin" class="d-inline">
+    <input type="hidden" asp-for="Id" />
+    @if (Model.HasAdminRole)
+    {
+        <button type="submit" class="btn btn-danger">Retirer le rôle Admin</button>
+    }
+</form>

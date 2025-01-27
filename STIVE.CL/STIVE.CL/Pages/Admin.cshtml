@@ -61,114 +61,119 @@
         </div>
         <div class="position-absolute overlay-div" style="top: 22%; left: 6%; width: 87%; height: auto;">
             @if (Model.TableToRender == "users")
-            {
-            <h2>Administration des utilisateurs</h2>
-            <table class="table table-dark table-striped table-hover w-100">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Tél</th>
-                    <th>Rôle</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var user in Model.Users)
-                {
-                var formUserId = $"delete-form-{user.UserId}";
-                <tr>
-                    <td>@user.UserId</td>
-                    <td>@user.UserName</td>
-                    <td>@user.Email</td>
-                    <td>@user.PhoneNumber</td>
-                    <td>@string.Join(", ", user.Roles ?? new List<string>())</td>
-                    <td>
-                        <a asp-page="/UserUpdate" asp-route-id="@user.UserId" title="Mettre à jour" class="btn-dark me-2">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form id="@formUserId" method="post" asp-page-handler="DeleteUser">
-                            <input type="hidden" name="userId" value="@user.UserId"/>
-                            <button type="button" class="btn btn-dark" onclick="confirmDelete('@formUserId')">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                }
-                </tbody>
-            </table>
+            { 
+                <h2>Administration des utilisateurs</h2>
+                <table class="table table-dark table-striped table-hover w-100">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Tél</th>
+                        <th>Rôle</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var user in Model.Users)
+                    {
+                    var formUserId = $"delete-form-{user.UserId}";
+                    <tr>
+                        <td>@user.UserId</td>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@string.Join(", ", user.Roles ?? new List<string>())</td>
+                        <td>
+                            <div class="d-flex">
+                                <a asp-page="/UserUpdate" asp-route-id="@user.UserId" title="Mettre à jour l'utilisateur" class="btn btn-dark me-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-page="/UserRoleUpdate" asp-route-id="@user.UserId" title="Mettre à jour le rôle de l'utilisateur" class="btn btn-dark me-2">
+                                    <i class="fa-solid fa-crown"></i>
+                                </a>
+                                <form id="@formUserId" method="post" asp-page-handler="DeleteUser">
+                                    <input type="hidden" name="userId" value="@user.UserId"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formUserId')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
             }
             else if (Model.TableToRender == "roles")
             {
-            <h2>Administration des rôles</h2>
-            <table class="table table-dark table-striped table-hover w-100">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var role in Model.Roles)
-                {
-                    var formRoleId = $"delete-form-{role.RoleId}";
+                <h2>Administration des rôles</h2>
+                <table class="table table-dark table-striped table-hover w-100">
+                    <thead>
                     <tr>
-                        <td>@role.RoleId</td>
-                        <td>@role.RoleName</td>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var role in Model.Roles)
+                    {
+                        var formRoleId = $"delete-form-{role.RoleId}";
+                        <tr>
+                            <td>@role.RoleId</td>
+                            <td>@role.RoleName</td>
+                            <td>
+                                <a asp-page="/RoleUpdate" asp-route-id="@role.RoleId" title="Mettre à jour" class="btn-dark me-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form id="@formRoleId" method="post" asp-page-handler="DeleteUser">
+                                    <input type="hidden" name="userId" value="@role.RoleId"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formRoleId')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            @*else if (Model.TableToRender == "gamedatas")
+            {
+                <h2>Administration des sauvegardes</h2>
+                <table class="table table-dark table-striped table-hover w-100">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Gold</th>
+                        <th>UserId</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var gamedata in Model.GameData)
+                    {
+                    var formGameDateId = $"delete-form-{gamedata.GameDataId}";
+                    <tr>
+                        <td>@gamedata.GameDataId</td>
+                        <td>@gamedata.Gold</td>
+                        <td>@gamedata.UserId</td>
                         <td>
-                            <a asp-page="/RoleUpdate" asp-route-id="@role.RoleId" title="Mettre à jour" class="btn-dark me-2">
+                            <a asp-page="/GamaDataUpdate" asp-route-id="@gamedata.GameDataId" asp-route-username="@.RoleName" title="Mettre à jour" class="btn-dark me-2">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form id="@formRoleId" method="post" asp-page-handler="DeleteUser">
-                                <input type="hidden" name="userId" value="@role.RoleId"/>
-                                <button type="button" class="btn btn-dark" onclick="confirmDelete('@formRoleId')">
+                            <form id="@formGameDateId" method="post" asp-page-handler="DeleteUser">
+                                <input type="hidden" name="userId" value="@gamedata.GameDataId"/>
+                                <button type="button" class="btn btn-dark" onclick="confirmDelete('@formGameDateId')">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </form>
                         </td>
                     </tr>
-                }
-                </tbody>
-            </table>
-            }
-            @*else if (Model.TableToRender == "gamedatas")
-            {
-            <h2>Administration des sauvegardes</h2>
-            <table class="table table-dark table-striped table-hover w-100">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Gold</th>
-                    <th>UserId</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var gamedata in Model.GameData)
-                {
-                var formGameDateId = $"delete-form-{gamedata.GameDataId}";
-                <tr>
-                    <td>@gamedata.GameDataId</td>
-                    <td>@gamedata.Gold</td>
-                    <td>@gamedata.UserId</td>
-                    <td>
-                        <a asp-page="/GamaDataUpdate" asp-route-id="@gamedata.GameDataId" asp-route-username="@.RoleName" title="Mettre à jour" class="btn-dark me-2">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form id="@formGameDateId" method="post" asp-page-handler="DeleteUser">
-                            <input type="hidden" name="userId" value="@gamedata.GameDataId"/>
-                            <button type="button" class="btn btn-dark" onclick="confirmDelete('@formGameDateId')">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                }
-                </tbody>
-            </table>
+                    }
+                    </tbody>
+                </table>
             }*@
         </div>
     </div>
