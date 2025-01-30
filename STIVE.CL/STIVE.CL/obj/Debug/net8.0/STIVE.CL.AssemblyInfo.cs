@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STIVE.CL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73045fadc004250fa46e86dc811b69949046ebdc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eab80b75a5374e4bc857fafd7229d719351aaff7")]
 [assembly: System.Reflection.AssemblyProductAttribute("STIVE.CL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STIVE.CL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

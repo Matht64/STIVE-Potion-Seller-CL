@@ -20,42 +20,42 @@
             </a>
 
             <!-- GameData Button -->
-            <a href="?tables=gamedatas" class="button button-small" title="Données de jeu">
+            <a href="?table=gamedatas" class="button button-small" title="Données de jeu">
                 <i class="fas fa-gamepad"></i>
             </a>
 
             <!-- Bonus Button -->
-            <a href="?tables=bonus" class="button button-small" title="Bonus">
+            <a href="?table=bonus" class="button button-small" title="Bonus">
                 <i class="fas fa-gift"></i>
             </a>
 
             <!-- GameDataBonus Button -->
-            <a href="?tables=gamedatabonus" class="button button-small" title="Bonus des utilisateurs">
+            <a href="?table=gamedatabonus" class="button button-small" title="Bonus des utilisateurs">
                 <i class="fas fa-gift"></i>
             </a>
 
             <!-- Potion Button -->
-            <a href="?tables=potions" class="button button-small" title="Potions">
+            <a href="?table=potions" class="button button-small" title="Potions">
                 <i class="fas fa-flask"></i>
             </a>
 
             <!-- GameDataPotion Button -->
-            <a href="?tables=gamedatapotions" class="button button-small" title="Potions des utilisateurs">
+            <a href="?table=gamedatapotions" class="button button-small" title="Potions des utilisateurs">
                 <i class="fas fa-flask"></i>
             </a>
 
             <!-- Supplier Button -->
-            <a href="?tables=suppliers" class="button button-small" title="Fournisseurs">
+            <a href="?table=suppliers" class="button button-small" title="Fournisseurs">
                 <i class="fas fa-truck"></i>
             </a>
 
             <!-- GameDataSupplier Button -->
-            <a href="?tables=gamedatasuppliers" class="button button-small" title="Fournisseurs des utilisateurs">
+            <a href="?table=gamedatasuppliers" class="button button-small" title="Fournisseurs des utilisateurs">
                 <i class="fas fa-truck"></i>
             </a>
 
             <!-- Customer Button -->
-            <a href="?tables=customers" class="button button-small" title="Clients">
+            <a href="?table=customers" class="button button-small" title="Clients">
                 <i class="fa-solid fa-circle-user"></i>
             </a>
         </div>
@@ -77,7 +77,7 @@
                     <tbody>
                     @foreach (var user in Model.Users)
                     {
-                    var formUserId = $"delete-form-{user.UserId}";
+                    var formId = $"delete-form-{user.UserId}";
                     <tr>
                         <td>@user.UserId</td>
                         <td>@user.UserName</td>
@@ -85,16 +85,17 @@
                         <td>@user.PhoneNumber</td>
                         <td>@string.Join(", ", user.Roles ?? new List<string>())</td>
                         <td>
-                            <div class="d-flex">
+                            <div class="d-flex justify-content-center">
                                 <a asp-page="/UserUpdate" asp-route-id="@user.UserId" title="Mettre à jour l'utilisateur" class="btn btn-dark me-2">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <a asp-page="/UserRoleUpdate" asp-route-id="@user.UserId" title="Mettre à jour le rôle de l'utilisateur" class="btn btn-dark me-2">
                                     <i class="fa-solid fa-crown"></i>
                                 </a>
-                                <form id="@formUserId" method="post" asp-page-handler="DeleteUser">
-                                    <input type="hidden" name="userId" value="@user.UserId"/>
-                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formUserId')">
+                                <form id="@formId" method="post" asp-page-handler="Delete">
+                                    <input type="hidden" name="id" value="@user.UserId"/>
+                                    <input type="hidden" name="type" value="user"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </form>
@@ -119,27 +120,30 @@
                     <tbody>
                     @foreach (var role in Model.Roles)
                     {
-                        var formRoleId = $"delete-form-{role.RoleId}";
+                        var formId = $"delete-form-{role.RoleId}";
                         <tr>
                             <td>@role.RoleId</td>
                             <td>@role.RoleName</td>
                             <td>
-                                <a asp-page="/RoleUpdate" asp-route-id="@role.RoleId" title="Mettre à jour" class="btn-dark me-2">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form id="@formRoleId" method="post" asp-page-handler="DeleteUser">
-                                    <input type="hidden" name="userId" value="@role.RoleId"/>
-                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formRoleId')">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </form>
+                                <div class="d-flex justify-content-center">
+                                    <a asp-page="/RoleUpdate" asp-route-id="@role.RoleId" title="Mettre à jour" class="btn btn-dark me-2">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form id="@formId" method="post" asp-page-handler="Delete">
+                                        <input type="hidden" name="id" value="@role.RoleId"/>
+                                        <input type="hidden" name="type" value="role"/>
+                                        <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     }
                     </tbody>
                 </table>
             }
-            @*else if (Model.TableToRender == "gamedatas")
+            else if (Model.TableToRender == "gamedatas")
             {
                 <h2>Administration des sauvegardes</h2>
                 <table class="table table-dark table-striped table-hover w-100">
@@ -147,52 +151,86 @@
                     <tr>
                         <th>ID</th>
                         <th>Gold</th>
-                        <th>UserId</th>
+                        <th>Nom Utilisateur</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach (var gamedata in Model.GameData)
+                    @foreach (var gamedata in Model.GameDatas)
                     {
-                    var formGameDateId = $"delete-form-{gamedata.GameDataId}";
+                    var formId = $"delete-form-{gamedata.GameDataId}";
                     <tr>
                         <td>@gamedata.GameDataId</td>
                         <td>@gamedata.Gold</td>
-                        <td>@gamedata.UserId</td>
+                        <td>@gamedata.UserName</td>
                         <td>
-                            <a asp-page="/GamaDataUpdate" asp-route-id="@gamedata.GameDataId" asp-route-username="@.RoleName" title="Mettre à jour" class="btn-dark me-2">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <form id="@formGameDateId" method="post" asp-page-handler="DeleteUser">
-                                <input type="hidden" name="userId" value="@gamedata.GameDataId"/>
-                                <button type="button" class="btn btn-dark" onclick="confirmDelete('@formGameDateId')">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </form>
+                            <div class="d-flex justify-content-center">
+                                <a asp-page="/GamaDataUpdate" asp-route-id="@gamedata.GameDataId" title="Mettre à jour" class="btn btn-dark me-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form id="@formId" method="post" asp-page-handler="Delete">
+                                    <input type="hidden" name="id" value="@gamedata.GameDataId"/>
+                                    <input type="hidden" name="type" value="gamedata"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     }
                     </tbody>
                 </table>
-            }*@
+            }
+            else if (Model.TableToRender == "bonus")
+            {
+                <h2>Administration des bonus</h2>
+                <table class="table table-dark table-striped table-hover w-100">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Durée</th>
+                        <th>Prix</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var bonus in Model.Bonuses)
+                    {
+                    var formId = $"delete-form-{bonus.BonusId}";
+                    <tr>
+                        <td>@bonus.BonusId</td>
+                        <td>@bonus.BonusName</td>
+                        <td>@bonus.BonusDuration</td>
+                        <td>@bonus.BonusPrice</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a asp-page="/GamaDataUpdate" asp-route-id="@bonus.BonusId" title="Mettre à jour" class="btn btn-dark me-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form id="@formId" method="post" asp-page-handler="Delete">
+                                    <input type="hidden" name="id" value="@bonus.BonusId"/>
+                                    <input type="hidden" name="type" value="bonus"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
+            }
         </div>
     </div>
 </div>
 
 <script>
-    function confirmDelete(formUserId) {
-        if (confirm("Voulez-vous vraiment supprimer cet utilisateur ?")) {
-            document.getElementById(formUserId).submit();
-        }
-    }
-    function confirmDelete(formRoleId) {
-        if (confirm("Voulez-vous vraiment supprimer ce rôle ?")) {
-            document.getElementById(formRoleId).submit();
-        }
-    }
-    function confirmDelete(formGameDateId) {
-        if (confirm("Voulez-vous vraiment supprimer cette sauvegarde ?")) {
-            document.getElementById(formGameDateId).submit();
+    function confirmDelete(formId) {
+        if (confirm("Voulez-vous vraiment supprimer cet élément ?")) {
+            document.getElementById(formId).submit();
         }
     }
 </script>

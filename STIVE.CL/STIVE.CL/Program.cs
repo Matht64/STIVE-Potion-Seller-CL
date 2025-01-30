@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using STIVE.CL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<ApiService>();
 
 // Configuration de l'authentification JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

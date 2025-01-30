@@ -2,110 +2,82 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using STIVE.CL.Services;
 
 namespace STIVE.CL.Pages;
 
 public class AdminModel : PageModel
 {
+    private readonly ApiService _apiService;
     public string TableToRender { get; set; }
     public List<User> Users { get; set; }
     public List<Role> Roles { get; set; }
+    public List<GameData> GameDatas { get; set; }
+    public List<Bonus> Bonuses { get; set; }
 
     private readonly HttpClient _httpClient;
 
-    public AdminModel(HttpClient httpClient)
+    public AdminModel(ApiService apiService)
     {
-        _httpClient = httpClient;
+        _apiService = apiService;
     }
 
     public async Task OnGetAsync(string table = "users")
     {
         TableToRender = table;
-
-        if (TableToRender == "users")
+        string baseUrl = "http://localhost:5294/api/";
+        
+        switch (TableToRender)
         {
-            await LoadUsersAsync();
-        }
-        else if (TableToRender == "roles")
-        {
-            await LoadRolesAsync();
+            case "users":
+                Users = await _apiService.GetListAsync<User>($"{baseUrl}User/getAll");
+                break;
+            case "roles":
+                Roles = await _apiService.GetListAsync<Role>($"{baseUrl}Role/getAll");
+                break;
+            case "gamedatas":
+                GameDatas = await _apiService.GetListAsync<GameData>($"{baseUrl}GameData/getAll");
+                break;
+            case "bonus":
+                Bonuses = await _apiService.GetListAsync<Bonus>($"{baseUrl}Bonus/getAll");
+                break;
         }
     }
-
-    private async Task LoadUsersAsync()
+    
+    public async Task<IActionResult> OnPostDeleteAsync(string id, string type)
     {
-        var response = await _httpClient.GetAsync("http://localhost:5294/api/User/getAll");
-
-        if (response.IsSuccessStatusCode)
+        if (string.IsNullOrEmpty(id))
         {
-            var json = await response.Content.ReadAsStringAsync();
-            Users = JsonSerializer.Deserialize<List<User>>(json);
+            ModelState.AddModelError("", "ID invalide.");
+            return Page();
+        }
+        
+        string baseUrl = "http://localhost:5294/api/";
+        
+        string? url = type switch
+        {
+            "user" => $"{baseUrl}User/delete/{id}",
+            "role" => $"{baseUrl}Role/delete/{id}",
+            "gamedata" => $"{baseUrl}GameData/delete/{id}",
+            "bonus" => $"{baseUrl}Bonus/delete/{id}",
+            _ => null
+        };
+
+        if (url == null)
+            return Page();
+        
+        if (await _apiService.DeleteAsync(url))
+        {
+            TempData["Message"] = $"{type} supprimé avec succès.";
+            return RedirectToPage(new { table = type + "s" });
         }
         else
         {
-            Users = new List<User>();
-        }
-    }
-
-    private async Task LoadRolesAsync()
-    {
-        var response = await _httpClient.GetAsync("http://localhost:5294/api/Role/getAll");
-
-        if (response.IsSuccessStatusCode)
-        {
-            var json = await response.Content.ReadAsStringAsync();
-            Roles = JsonSerializer.Deserialize<List<Role>>(json);
-        }
-        else
-        {
-            Roles = new List<Role>();
-        }
-    }
-
-    public async Task<IActionResult> OnPostDeleteUserAsync(string userId)
-    {
-        if (string.IsNullOrEmpty(userId))
-        {
-            ModelState.AddModelError("", "ID utilisateur invalide.");
-            return Page();
-        }
-
-        var response = await _httpClient.DeleteAsync($"http://localhost:5294/api/User/delete/{userId}");
-
-        if (response.IsSuccessStatusCode)
-        {
-            TempData["Message"] = "Utilisateur supprimé avec succès.";
-            return RedirectToPage(new { table = "users" });
-        }
-        else
-        {
-            TempData["Error"] = "Erreur lors de la suppression de l'utilisateur.";
-            return Page();
-        }
-    }
-    public async Task<IActionResult> OnPostDeleteRoleAsync(string roleId)
-    {
-        if (string.IsNullOrEmpty(roleId))
-        {
-            ModelState.AddModelError("", "ID utilisateur invalide.");
-            return Page();
-        }
-
-        var response = await _httpClient.DeleteAsync($"http://localhost:5294/api/Role/delete/{roleId}");
-
-        if (response.IsSuccessStatusCode)
-        {
-            TempData["Message"] = "Utilisateur supprimé avec succès.";
-            return RedirectToPage(new { table = "users" });
-        }
-        else
-        {
-            TempData["Error"] = "Erreur lors de la suppression de l'utilisateur.";
-            return Page();
+            TempData["Error"] = $"Erreur lors de la suppression du {type}.";
+            return RedirectToPage(new { table = type + "s" });
         }
     }
 }
-
 public class User
 {
     [JsonPropertyName("id")]
@@ -123,11 +95,31 @@ public class User
     [JsonPropertyName("roles")]
     public List<string> Roles { get; set; }
 }
-
 public class Role
 {
     [JsonPropertyName("id")]
     public string RoleId { get; set; }
     [JsonPropertyName("name")]
     public string RoleName { get; set; }
+}
+public class GameData
+{
+    [JsonPropertyName("id")]
+    public int GameDataId { get; set; }
+    [JsonPropertyName("gold")]
+    public int Gold { get; set; }
+    [JsonPropertyName("userName")]
+    public string UserName { get; set; }
+}
+
+public class Bonus
+{
+    [JsonPropertyName("id")]
+    public int BonusId { get; set; }
+    [JsonPropertyName("name")]
+    public string BonusName { get; set; }
+    [JsonPropertyName("duration")]
+    public int BonusDuration { get; set; }
+    [JsonPropertyName("price")]
+    public float BonusPrice { get; set; }
 }
