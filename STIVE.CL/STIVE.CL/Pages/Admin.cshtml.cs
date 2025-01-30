@@ -14,6 +14,7 @@ public class AdminModel : PageModel
     public List<Role> Roles { get; set; }
     public List<GameData> GameDatas { get; set; }
     public List<Bonus> Bonuses { get; set; }
+    public List<Potion> Potions { get; set; }
 
     private readonly HttpClient _httpClient;
 
@@ -41,6 +42,9 @@ public class AdminModel : PageModel
             case "bonus":
                 Bonuses = await _apiService.GetListAsync<Bonus>($"{baseUrl}Bonus/getAll");
                 break;
+            case "potions":
+                Potions = await _apiService.GetListAsync<Potion>($"{baseUrl}Potion/getAll");
+                break;
         }
     }
     
@@ -60,6 +64,7 @@ public class AdminModel : PageModel
             "role" => $"{baseUrl}Role/delete/{id}",
             "gamedata" => $"{baseUrl}GameData/delete/{id}",
             "bonus" => $"{baseUrl}Bonus/delete/{id}",
+            "potion" => $"{baseUrl}Potion/delete/{id}",
             _ => null
         };
 
@@ -122,4 +127,17 @@ public class Bonus
     public int BonusDuration { get; set; }
     [JsonPropertyName("price")]
     public float BonusPrice { get; set; }
+}
+
+public class Potion
+{
+    [JsonPropertyName("id")]
+    public int PotionId { get; set; }
+    [JsonPropertyName("name")]
+    public string PotionName { get; set; }
+    [JsonPropertyName("price")]
+    public int PotionPrice { get; set; }
+    [JsonPropertyName("picture")]
+    public string PotionPicture { get; set; }
+    
 }

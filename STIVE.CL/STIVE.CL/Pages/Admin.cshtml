@@ -206,12 +206,53 @@
                         <td>@bonus.BonusPrice</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a asp-page="/GamaDataUpdate" asp-route-id="@bonus.BonusId" title="Mettre à jour" class="btn btn-dark me-2">
+                                <a asp-page="/BonusUpdate" asp-route-id="@bonus.BonusId" title="Mettre à jour" class="btn btn-dark me-2">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form id="@formId" method="post" asp-page-handler="Delete">
                                     <input type="hidden" name="id" value="@bonus.BonusId"/>
                                     <input type="hidden" name="type" value="bonus"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else if (Model.TableToRender == "potions")
+            {
+                <h2>Administration des potions</h2>
+                <table class="table table-dark table-striped table-hover w-100">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Route image</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var potion in Model.Potions)
+                    {
+                    var formId = $"delete-form-{potion.PotionId}";
+                    <tr>
+                        <td>@potion.PotionId</td>
+                        <td>@potion.PotionName</td>
+                        <td>@potion.PotionPrice</td>
+                        <td>@potion.PotionPicture</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a asp-page="/PotionUpdate" asp-route-id="@potion.PotionId" title="Mettre à jour" class="btn btn-dark me-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form id="@formId" method="post" asp-page-handler="Delete">
+                                    <input type="hidden" name="id" value="@potion.PotionId"/>
+                                    <input type="hidden" name="type" value="potion"/>
                                     <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
                                         <i class="fas fa-times"></i>
                                     </button>
