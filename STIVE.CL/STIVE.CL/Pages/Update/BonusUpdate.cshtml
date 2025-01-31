@@ -1,0 +1,32 @@
+@page
+@model STIVE.CL.Pages.BonusUpdateModel
+
+@{
+ViewData["Title"] = "Modifier la bonus";
+}
+
+<h1>Modifier le bonus</h1>
+
+<div id="roleFormContainer">
+    <form method="post">
+        <input type="hidden" asp-for="Bonus.BonusId" />
+
+        <div class="form-group">
+            <label asp-for="Bonus.BonusName"></label>
+            <input asp-for="Bonus.BonusName" class="form-control" />
+            <span asp-validation-for="Bonus.BonusName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Bonus.BonusDuration"></label>
+            <input asp-for="Bonus.BonusDuration" class="form-control" />
+            <span asp-validation-for="Bonus.BonusDuration" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Bonus.BonusPrice"></label>
+            <input asp-for="Bonus.BonusPrice" class="form-control" />
+            <span asp-validation-for="Bonus.BonusPrice" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+</div>
