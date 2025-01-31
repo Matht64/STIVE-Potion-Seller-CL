@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using STIVE.CL.DTOs;
 
 namespace STIVE.CL.Pages;
 
@@ -17,7 +18,7 @@ public class UserUpdateModel : PageModel
     [BindProperty(SupportsGet = true)]
     public string Id { get; set; }
     [BindProperty]
-    public UserDto User { get; set; }
+    public UserUpdateDto User { get; set; }
     
     public async Task<IActionResult> OnGetAsync()
     {
@@ -30,7 +31,7 @@ public class UserUpdateModel : PageModel
             return NotFound();
         
         var jsonResponse = await response.Content.ReadAsStringAsync();
-        User = JsonSerializer.Deserialize<UserDto>(jsonResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        User = JsonSerializer.Deserialize<UserUpdateDto>(jsonResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         
         return Page();
     }
@@ -51,15 +52,4 @@ public class UserUpdateModel : PageModel
         
         return RedirectToPage("/Admin");
     }
-}
-public class UserDto
-{
-    [JsonPropertyName("id")]
-    public string UserId { get; set; }
-    [JsonPropertyName("userName")]
-    public string UserName { get; set; }
-    [JsonPropertyName("email")]
-    public string Email { get; set; }
-    [JsonPropertyName("phoneNumber")]
-    public string PhoneNumber { get; set; }
 }

@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using STIVE.CL.DTOs;
 
 namespace STIVE.CL.Pages;
 
@@ -53,16 +54,4 @@ public class PotionUpdateModel : PageModel
         
         return RedirectToPage("/Admin");
     }
-}
-
-public class PotionDto
-{
-    [JsonPropertyName("id")]
-    public int PotionId { get; set; }
-    [JsonPropertyName("name")]
-    public string PotionName { get; set; }
-    [JsonPropertyName("price")]
-    public int PotionPrice { get; set; }
-    [JsonPropertyName("picture")]
-    public string PotionPicture { get; set; }
 }

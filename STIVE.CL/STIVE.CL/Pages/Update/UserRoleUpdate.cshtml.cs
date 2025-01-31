@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using STIVE.CL.DTOs;
 
 namespace STIVE.CL.Pages;
 
@@ -74,17 +75,7 @@ public class UserRoleUpdateModel : PageModel
             return Page();
         }
 
-        // Recharger les rôles après modification
         await OnGetAsync();
         return Page();
     }
-}
-
-public class RoleAssignmentDto
-{
-    [JsonPropertyName("userId")]
-    public string UserId { get; set; }
-
-    [JsonPropertyName("roleName")]
-    public string RoleName { get; set; }
 }

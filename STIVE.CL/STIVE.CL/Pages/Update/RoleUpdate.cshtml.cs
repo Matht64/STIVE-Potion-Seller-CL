@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using STIVE.CL.DTOs;
 
 namespace STIVE.CL.Pages;
 
@@ -53,12 +54,4 @@ public class RoleUpdateModel : PageModel
         
         return RedirectToPage("/Admin");
     }
-}
-
-public class RoleDto
-{
-    [JsonPropertyName("id")]
-    public string RoleId { get; set; }
-    [JsonPropertyName("name")]
-    public string RoleName { get; set; }
 }

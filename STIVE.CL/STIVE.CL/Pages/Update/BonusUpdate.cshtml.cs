@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using STIVE.CL.DTOs;
 
 namespace STIVE.CL.Pages;
 
@@ -53,16 +54,4 @@ public class BonusUpdateModel : PageModel
         
         return RedirectToPage("/Admin");
     }
-}
-
-public class BonusDto
-{
-    [JsonPropertyName("id")]
-    public int BonusId { get; set; }
-    [JsonPropertyName("name")]
-    public string BonusName { get; set; }
-    [JsonPropertyName("duration")]
-    public int BonusDuration { get; set; }
-    [JsonPropertyName("price")]
-    public float BonusPrice { get; set; }
 }

@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using STIVE.CL.DTOs;
 using STIVE.CL.Services;
 
 namespace STIVE.CL.Pages;
@@ -10,13 +11,13 @@ public class AdminModel : PageModel
 {
     private readonly ApiService _apiService;
     public string TableToRender { get; set; }
-    public List<User> Users { get; set; }
-    public List<Role> Roles { get; set; }
-    public List<GameData> GameDatas { get; set; }
-    public List<Bonus> Bonuses { get; set; }
-    public List<Potion> Potions { get; set; }
-    public List<Supplier> Suppliers { get; set; }
-    public List<Customer> Customers { get; set; }
+    public List<UserDto> Users { get; set; }
+    public List<RoleDto> Roles { get; set; }
+    public List<GameDataDto> GameDatas { get; set; }
+    public List<BonusDto> Bonuses { get; set; }
+    public List<PotionDto> Potions { get; set; }
+    public List<SupplierDto> Suppliers { get; set; }
+    public List<CustomerDto> Customers { get; set; }
 
     private readonly HttpClient _httpClient;
 
@@ -33,25 +34,25 @@ public class AdminModel : PageModel
         switch (TableToRender)
         {
             case "users":
-                Users = await _apiService.GetListAsync<User>($"{baseUrl}User/getAll");
+                Users = await _apiService.GetListAsync<UserDto>($"{baseUrl}User/getAll");
                 break;
             case "roles":
-                Roles = await _apiService.GetListAsync<Role>($"{baseUrl}Role/getAll");
+                Roles = await _apiService.GetListAsync<RoleDto>($"{baseUrl}Role/getAll");
                 break;
             case "gamedatas":
-                GameDatas = await _apiService.GetListAsync<GameData>($"{baseUrl}GameData/getAll");
+                GameDatas = await _apiService.GetListAsync<GameDataDto>($"{baseUrl}GameData/getAll");
                 break;
             case "bonus":
-                Bonuses = await _apiService.GetListAsync<Bonus>($"{baseUrl}Bonus/getAll");
+                Bonuses = await _apiService.GetListAsync<BonusDto>($"{baseUrl}Bonus/getAll");
                 break;
             case "potions":
-                Potions = await _apiService.GetListAsync<Potion>($"{baseUrl}Potion/getAll");
+                Potions = await _apiService.GetListAsync<PotionDto>($"{baseUrl}Potion/getAll");
                 break;
             case "suppliers":
-                Suppliers = await _apiService.GetListAsync<Supplier>($"{baseUrl}Supplier/getAll");
+                Suppliers = await _apiService.GetListAsync<SupplierDto>($"{baseUrl}Supplier/getAll");
                 break;
             case "customers":
-                Customers = await _apiService.GetListAsync<Customer>($"{baseUrl}Customer/getAll");
+                Customers = await _apiService.GetListAsync<CustomerDto>($"{baseUrl}Customer/getAll");
                 break;
         }
     }
@@ -92,81 +93,4 @@ public class AdminModel : PageModel
             return RedirectToPage(new { table = type + "s" });
         }
     }
-}
-public class User
-{
-    [JsonPropertyName("id")]
-    public string UserId { get; set; }
-
-    [JsonPropertyName("userName")]
-    public string UserName { get; set; }
-
-    [JsonPropertyName("email")]
-    public string Email { get; set; }
-
-    [JsonPropertyName("phoneNumber")]
-    public string PhoneNumber { get; set; }
-
-    [JsonPropertyName("roles")]
-    public List<string> Roles { get; set; }
-}
-public class Role
-{
-    [JsonPropertyName("id")]
-    public string RoleId { get; set; }
-    [JsonPropertyName("name")]
-    public string RoleName { get; set; }
-}
-public class GameData
-{
-    [JsonPropertyName("id")]
-    public int GameDataId { get; set; }
-    [JsonPropertyName("gold")]
-    public int Gold { get; set; }
-    [JsonPropertyName("userName")]
-    public string UserName { get; set; }
-}
-
-public class Bonus
-{
-    [JsonPropertyName("id")]
-    public int BonusId { get; set; }
-    [JsonPropertyName("name")]
-    public string BonusName { get; set; }
-    [JsonPropertyName("duration")]
-    public int BonusDuration { get; set; }
-    [JsonPropertyName("price")]
-    public float BonusPrice { get; set; }
-}
-
-public class Potion
-{
-    [JsonPropertyName("id")]
-    public int PotionId { get; set; }
-    [JsonPropertyName("name")]
-    public string PotionName { get; set; }
-    [JsonPropertyName("price")]
-    public int PotionPrice { get; set; }
-    [JsonPropertyName("picture")]
-    public string PotionPicture { get; set; }
-}
-
-public class Supplier
-{
-    [JsonPropertyName("id")]
-    public int SupplierId { get; set; }
-    [JsonPropertyName("name")]
-    public string SupplierName { get; set; }
-    [JsonPropertyName("potionId")]
-    public int PotionId { get; set; }
-    [JsonPropertyName("picture")]
-    public string SupplierPicture { get; set; }
-}
-
-public class Customer
-{
-    [JsonPropertyName("id")]
-    public int CustomerId { get; set; }
-    [JsonPropertyName("picture")]
-    public string CustomerPicture { get; set; }
 }
