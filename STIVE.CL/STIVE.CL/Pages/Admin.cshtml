@@ -86,10 +86,10 @@
                         <td>@string.Join(", ", user.Roles ?? new List<string>())</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a asp-page="/UserUpdate" asp-route-id="@user.UserId" title="Mettre à jour l'utilisateur" class="btn btn-dark me-2">
+                                <a asp-page="Update/UserUpdate" asp-route-id="@user.UserId" title="Mettre à jour l'utilisateur" class="btn btn-dark me-2">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a asp-page="/UserRoleUpdate" asp-route-id="@user.UserId" title="Mettre à jour le rôle de l'utilisateur" class="btn btn-dark me-2">
+                                <a asp-page="Update/UserRoleUpdate" asp-route-id="@user.UserId" title="Mettre à jour le rôle de l'utilisateur" class="btn btn-dark me-2">
                                     <i class="fa-solid fa-crown"></i>
                                 </a>
                                 <form id="@formId" method="post" asp-page-handler="Delete">
@@ -109,6 +109,7 @@
             else if (Model.TableToRender == "roles")
             {
                 <h2>Administration des rôles</h2>
+                <a href="Add/AddRole" class="btn btn-dark mb-3">Créer un nouveau rôle</a>
                 <table class="table table-dark table-striped table-hover w-100">
                     <thead>
                     <tr>
@@ -126,7 +127,7 @@
                             <td>@role.RoleName</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a asp-page="/RoleUpdate" asp-route-id="@role.RoleId" title="Mettre à jour" class="btn btn-dark me-2">
+                                    <a asp-page="Update/RoleUpdate" asp-route-id="@role.RoleId" title="Mettre à jour" class="btn btn-dark me-2">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <form id="@formId" method="post" asp-page-handler="Delete">
@@ -146,6 +147,7 @@
             else if (Model.TableToRender == "gamedatas")
             {
                 <h2>Administration des sauvegardes</h2>
+                <a href="Add/AddGameData" class="btn btn-dark mb-3">Créer une nouvelle sauvegarde</a>
                 <table class="table table-dark table-striped table-hover w-100">
                     <thead>
                     <tr>
@@ -165,7 +167,7 @@
                         <td>@gamedata.UserName</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a asp-page="/GamaDataUpdate" asp-route-id="@gamedata.GameDataId" title="Mettre à jour" class="btn btn-dark me-2">
+                                <a asp-page="Update/GamaDataUpdate" asp-route-id="@gamedata.GameDataId" title="Mettre à jour" class="btn btn-dark me-2">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form id="@formId" method="post" asp-page-handler="Delete">
@@ -185,6 +187,7 @@
             else if (Model.TableToRender == "bonus")
             {
                 <h2>Administration des bonus</h2>
+                <a href="Add/AddBonus" class="btn btn-dark mb-3">Créer un nouveau bonus</a>
                 <table class="table table-dark table-striped table-hover w-100">
                     <thead>
                     <tr>
@@ -206,7 +209,7 @@
                         <td>@bonus.BonusPrice</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a asp-page="/BonusUpdate" asp-route-id="@bonus.BonusId" title="Mettre à jour" class="btn btn-dark me-2">
+                                <a asp-page="Update/BonusUpdate" asp-route-id="@bonus.BonusId" title="Mettre à jour" class="btn btn-dark me-2">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form id="@formId" method="post" asp-page-handler="Delete">
@@ -226,6 +229,7 @@
             else if (Model.TableToRender == "potions")
             {
                 <h2>Administration des potions</h2>
+                <a href="Add/AddPotion" class="btn btn-dark mb-3">Créer une nouvelle potion</a>
                 <table class="table table-dark table-striped table-hover w-100">
                     <thead>
                     <tr>
@@ -247,12 +251,92 @@
                         <td>@potion.PotionPicture</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a asp-page="/PotionUpdate" asp-route-id="@potion.PotionId" title="Mettre à jour" class="btn btn-dark me-2">
+                                <a asp-page="Update/PotionUpdate" asp-route-id="@potion.PotionId" title="Mettre à jour" class="btn btn-dark me-2">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form id="@formId" method="post" asp-page-handler="Delete">
                                     <input type="hidden" name="id" value="@potion.PotionId"/>
                                     <input type="hidden" name="type" value="potion"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else if (Model.TableToRender == "suppliers")
+            {
+                <h2>Administration des fournisseurs</h2>
+                <a href="Add/AddSupplier" class="btn btn-dark mb-3">Créer un nouveau fournisseur</a>
+                <table class="table table-dark table-striped table-hover w-100">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Potion Id</th>
+                        <th>Route image</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var supplier in Model.Suppliers)
+                    {
+                    var formId = $"delete-form-{supplier.SupplierId}";
+                    <tr>
+                        <td>@supplier.SupplierId</td>
+                        <td>@supplier.SupplierName</td>
+                        <td>@supplier.PotionId</td>
+                        <td>@supplier.SupplierPicture</td>
+                        <td>    
+                            <div class="d-flex justify-content-center">
+                                <a asp-page="Update/SupplierUpdate" asp-route-id="@supplier.SupplierId" title="Mettre à jour" class="btn btn-dark me-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form id="@formId" method="post" asp-page-handler="Delete">
+                                    <input type="hidden" name="id" value="@supplier.SupplierId"/>
+                                    <input type="hidden" name="type" value="supplier"/>
+                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else if (Model.TableToRender == "customers")
+            {
+                <h2>Administration des clients</h2>
+                <a href="Add/AddCustomer" class="btn btn-dark mb-3">Créer un nouveau client</a>
+                <table class="table table-dark table-striped table-hover w-100">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Route image</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var customer in Model.Customers)
+                    {
+                    var formId = $"delete-form-{customer.CustomerId}";
+                    <tr>
+                        <td>@customer.CustomerId</td>
+                        <td>@customer.CustomerPicture</td>
+                        <td>    
+                            <div class="d-flex justify-content-center">
+                                <a asp-page="Update/CustomerUpdate" asp-route-id="@customer.CustomerId" title="Mettre à jour" class="btn btn-dark me-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form id="@formId" method="post" asp-page-handler="Delete">
+                                    <input type="hidden" name="id" value="@customer.CustomerId"/>
+                                    <input type="hidden" name="type" value="customer"/>
                                     <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
                                         <i class="fas fa-times"></i>
                                     </button>

@@ -15,6 +15,8 @@ public class AdminModel : PageModel
     public List<GameData> GameDatas { get; set; }
     public List<Bonus> Bonuses { get; set; }
     public List<Potion> Potions { get; set; }
+    public List<Supplier> Suppliers { get; set; }
+    public List<Customer> Customers { get; set; }
 
     private readonly HttpClient _httpClient;
 
@@ -45,6 +47,12 @@ public class AdminModel : PageModel
             case "potions":
                 Potions = await _apiService.GetListAsync<Potion>($"{baseUrl}Potion/getAll");
                 break;
+            case "suppliers":
+                Suppliers = await _apiService.GetListAsync<Supplier>($"{baseUrl}Supplier/getAll");
+                break;
+            case "customers":
+                Customers = await _apiService.GetListAsync<Customer>($"{baseUrl}Customer/getAll");
+                break;
         }
     }
     
@@ -65,6 +73,8 @@ public class AdminModel : PageModel
             "gamedata" => $"{baseUrl}GameData/delete/{id}",
             "bonus" => $"{baseUrl}Bonus/delete/{id}",
             "potion" => $"{baseUrl}Potion/delete/{id}",
+            "supplier" => $"{baseUrl}Supplier/delete/{id}",
+            "customers" => $"{baseUrl}Customer/delete/{id}",
             _ => null
         };
 
@@ -139,5 +149,24 @@ public class Potion
     public int PotionPrice { get; set; }
     [JsonPropertyName("picture")]
     public string PotionPicture { get; set; }
-    
+}
+
+public class Supplier
+{
+    [JsonPropertyName("id")]
+    public int SupplierId { get; set; }
+    [JsonPropertyName("name")]
+    public string SupplierName { get; set; }
+    [JsonPropertyName("potionId")]
+    public int PotionId { get; set; }
+    [JsonPropertyName("picture")]
+    public string SupplierPicture { get; set; }
+}
+
+public class Customer
+{
+    [JsonPropertyName("id")]
+    public int CustomerId { get; set; }
+    [JsonPropertyName("picture")]
+    public string CustomerPicture { get; set; }
 }

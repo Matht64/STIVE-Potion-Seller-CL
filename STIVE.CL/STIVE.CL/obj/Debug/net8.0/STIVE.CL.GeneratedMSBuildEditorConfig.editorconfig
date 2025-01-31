@@ -54,20 +54,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/RoleUpdate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUm9sZVVwZGF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/UserRoleUpdate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlclJvbGVVcGRhdGUuY3NodG1s
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Update/PotionUpdate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlL1BvdGlvblVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/UserUpdate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNlclVwZGF0ZS5jc2h0bWw=
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Update/RoleUpdate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlL1JvbGVVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Update/UserRoleUpdate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlL1VzZXJSb2xlVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Update/UserUpdate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlL1VzZXJVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/_ViewImports.cshtml]

@@ -1,0 +1,32 @@
+@page
+@model STIVE.CL.Pages.PotionUpdateModel
+
+@{
+    ViewData["Title"] = "Modifier la potion";
+}
+
+<h1>Modifier la potion</h1>
+
+<div id="roleFormContainer">
+    <form method="post">
+        <input type="hidden" asp-for="Potion.PotionId" />
+
+        <div class="form-group">
+            <label asp-for="Potion.PotionName"></label>
+            <input asp-for="Potion.PotionName" class="form-control" />
+            <span asp-validation-for="Potion.PotionName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Potion.PotionPrice"></label>
+            <input asp-for="Potion.PotionPrice" class="form-control" />
+            <span asp-validation-for="Potion.PotionPrice" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Potion.PotionPicture"></label>
+            <input asp-for="Potion.PotionPicture" class="form-control" />
+            <span asp-validation-for="Potion.PotionPicture" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+</div>
