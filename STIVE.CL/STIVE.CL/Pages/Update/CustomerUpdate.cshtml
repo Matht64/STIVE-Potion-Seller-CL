@@ -1,0 +1,27 @@
+@page
+@model STIVE.CL.Pages.CustomerUpdateModel
+
+@{
+ViewData["Title"] = "Modifier le client";
+}
+
+<h1>Modifier le client</h1>
+
+<div id="roleFormContainer">
+    <form method="post">
+        <input type="hidden" asp-for="Customer.CustomerId" />
+
+        <div class="form-group">
+            <label asp-for="Customer.CustomerName"></label>
+            <input asp-for="Customer.CustomerName" class="form-control" />
+            <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.CustomerPicture"></label>
+            <input asp-for="Customer.CustomerPicture" class="form-control" />
+            <span asp-validation-for="Customer.CustomerPicture" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+</div>
