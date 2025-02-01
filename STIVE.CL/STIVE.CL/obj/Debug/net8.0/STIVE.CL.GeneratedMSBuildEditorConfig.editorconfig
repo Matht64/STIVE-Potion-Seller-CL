@@ -18,6 +18,30 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Add/AddBonus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkL0FkZEJvbnVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Add/AddCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkL0FkZEN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Add/AddGameData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkL0FkZEdhbWVEYXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Add/AddPotion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkL0FkZFBvdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Add/AddRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkL0FkZFJvbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Add/AddSupplier.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkL0FkZFN1cHBsaWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/Pages/Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

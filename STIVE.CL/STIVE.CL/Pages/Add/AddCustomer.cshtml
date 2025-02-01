@@ -1,27 +1,26 @@
 @page
-@model STIVE.CL.Pages.CustomerUpdateModel
+@model STIVE.CL.Pages.Add.AddCustomerModel
 
 @{
-ViewData["Title"] = "Modifier le client";
+ViewData["Title"] = "Ajouter un client";
 }
 
-<h1>Modifier le client</h1>
+<h1>Ajouter un client</h1>
 
-<div id="roleFormContainer">
+<div id="customerFormContainer">
     <form method="post">
-        <input type="hidden" asp-for="Customer.CustomerId" />
-
         <div class="form-group">
             <label asp-for="Customer.CustomerName">Nom du client</label>
-            <input asp-for="Customer.CustomerName" class="form-control" />
+            <input asp-for="Customer.CustomerName" class="form-control" placeholder="Entrez le nom du client" required />
             <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Customer.CustomerPicture">Chemin vers l'image</label>
-            <input asp-for="Customer.CustomerPicture" class="form-control" />
+            <input asp-for="Customer.CustomerPicture" class="form-control" placeholder="Entrez le chemin vers l'image" required />
             <span asp-validation-for="Customer.CustomerPicture" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+
+        <button type="submit" class="btn btn-success">Ajouter</button>
     </form>
 </div>

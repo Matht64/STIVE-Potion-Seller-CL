@@ -1,29 +1,27 @@
 @page
-@model STIVE.CL.Pages.SupplierUpdateModel
+@model STIVE.CL.Pages.Add.AddSupplierModel
 
 @{
-ViewData["Title"] = "Modifier le fournisseur";
+ViewData["Title"] = "Ajouter un fournisseur";
 }
 
-<h1>Modifier le fournisseur</h1>
+<h1>Ajouter un fournisseur</h1>
 
-<div id="roleFormContainer">
+<div id="supplierFormContainer">
     <form method="post">
-        <input type="hidden" asp-for="Supplier.SupplierId" />
-
         <div class="form-group">
             <label asp-for="Supplier.SupplierName">Nom du fournisseur</label>
-            <input asp-for="Supplier.SupplierName" class="form-control" />
+            <input asp-for="Supplier.SupplierName" class="form-control" placeholder="Entrez le nom du fournisseur" required />
             <span asp-validation-for="Supplier.SupplierName" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Supplier.SupplierPicture">Chemin vers l'image</label>
-            <input asp-for="Supplier.SupplierPicture" class="form-control" />
+            <input asp-for="Supplier.SupplierPicture" class="form-control" placeholder="Entrez le chemin vers l'image" required />
             <span asp-validation-for="Supplier.SupplierPicture" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Supplier.PotionId">Potion associée</label>
-            <select asp-for="Supplier.PotionId" class="form-control">
+            <select asp-for="Supplier.PotionId" class="form-control" required >
                 @foreach (var potion in Model.Potions)
                 {
                 <option value="@potion.PotionId">@potion.PotionName</option>
@@ -31,8 +29,7 @@ ViewData["Title"] = "Modifier le fournisseur";
             </select>
             <span asp-validation-for="Supplier.PotionId" class="text-danger"></span>
         </div>
-        
 
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <button type="submit" class="btn btn-success">Ajouter</button>
     </form>
 </div>

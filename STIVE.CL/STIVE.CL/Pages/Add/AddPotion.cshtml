@@ -1,32 +1,30 @@
 @page
-@model STIVE.CL.Pages.PotionUpdateModel
+@model STIVE.CL.Pages.Add.AddPotionModel
 
 @{
-    ViewData["Title"] = "Modifier la potion";
+ViewData["Title"] = "Ajouter une potion";
 }
 
-<h1>Modifier la potion</h1>
+<h1>Ajouter une potion</h1>
 
-<div id="roleFormContainer">
+<div id="potionFormContainer">
     <form method="post">
-        <input type="hidden" asp-for="Potion.PotionId" />
-
         <div class="form-group">
             <label asp-for="Potion.PotionName">Nom de la potion</label>
-            <input asp-for="Potion.PotionName" class="form-control" />
+            <input asp-for="Potion.PotionName" class="form-control" placeholder="Entrez le nom de la potion" required />
             <span asp-validation-for="Potion.PotionName" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Potion.PotionPrice">Prix de la potion</label>
-            <input asp-for="Potion.PotionPrice" class="form-control" />
+            <input asp-for="Potion.PotionPrice" class="form-control" placeholder="Entrez le prix de la potion" required />
             <span asp-validation-for="Potion.PotionPrice" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Potion.PotionPicture">Chemin vers l'image</label>
-            <input asp-for="Potion.PotionPicture" class="form-control" />
+            <input asp-for="Potion.PotionPicture" class="form-control" placeholder="Entrez le chemin vers l'image" required />
             <span asp-validation-for="Potion.PotionPicture" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <button type="submit" class="btn btn-success">Ajouter</button>
     </form>
 </div>

@@ -12,7 +12,7 @@ ViewData["Title"] = "Modifier le rôle";
         <input type="hidden" asp-for="Role.RoleId" />
 
         <div class="form-group">
-            <label asp-for="Role.RoleName"></label>
+            <label asp-for="Role.RoleName">Nom du rôle</label>
             <input asp-for="Role.RoleName" class="form-control" />
             <span asp-validation-for="Role.RoleName" class="text-danger"></span>
         </div>

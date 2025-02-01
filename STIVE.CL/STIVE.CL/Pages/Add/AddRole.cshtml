@@ -1,0 +1,20 @@
+@page
+@model STIVE.CL.Pages.Add.AddRoleModel
+
+@{
+ViewData["Title"] = "Ajouter un rôle";
+}
+
+<h1>Ajouter un rôle</h1>
+
+<div id="roleFormContainer">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Role.RoleName">Nom du rôle</label>
+            <input asp-for="Role.RoleName" class="form-control" placeholder="Entrez le nom du rôle" required />
+            <span asp-validation-for="Role.RoleName" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Ajouter</button>
+    </form>
+</div>

@@ -1,32 +1,30 @@
 @page
-@model STIVE.CL.Pages.BonusUpdateModel
+@model STIVE.CL.Pages.Add.AddBonusModel
 
 @{
-ViewData["Title"] = "Modifier la bonus";
+ViewData["Title"] = "Ajouter un bonus";
 }
 
-<h1>Modifier le bonus</h1>
+<h1>Ajouter un bonus</h1>
 
-<div id="roleFormContainer">
+<div id="bonusFormContainer">
     <form method="post">
-        <input type="hidden" asp-for="Bonus.BonusId" />
-
         <div class="form-group">
             <label asp-for="Bonus.BonusName">Nom du bonus</label>
-            <input asp-for="Bonus.BonusName" class="form-control" />
+            <input asp-for="Bonus.BonusName" class="form-control" placeholder="Entrez le nom du bonus" required />
             <span asp-validation-for="Bonus.BonusName" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Bonus.BonusDuration">Durée du bonus</label>
-            <input asp-for="Bonus.BonusDuration" class="form-control" />
+            <input asp-for="Bonus.BonusDuration" class="form-control" placeholder="Entrez la durée du bonus" required />
             <span asp-validation-for="Bonus.BonusDuration" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Bonus.BonusPrice">Prix du bonus</label>
-            <input asp-for="Bonus.BonusPrice" class="form-control" />
+            <input asp-for="Bonus.BonusPrice" class="form-control" placeholder="Entrez le prix du bonus" required />
             <span asp-validation-for="Bonus.BonusPrice" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <button type="submit" class="btn btn-success">Ajouter</button>
     </form>
 </div>
