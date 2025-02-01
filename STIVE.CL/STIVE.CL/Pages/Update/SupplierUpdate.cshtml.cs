@@ -1,11 +1,10 @@
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using STIVE.CL.DTOs;
 
-namespace STIVE.CL.Pages;
+namespace STIVE.CL.Pages.Update;
 
 public class SupplierUpdateModel : PageModel
 {
@@ -20,7 +19,7 @@ public class SupplierUpdateModel : PageModel
     public int Id { get; set; }
     [BindProperty]
     public SupplierDto Supplier { get; set; }
-    public List<PotionDto> Potions { get; set; } = new();
+    public List<PotionDto> Potions { get; set; } = new List<PotionDto>();
 
     public async Task<IActionResult> OnGetAsync()
     {

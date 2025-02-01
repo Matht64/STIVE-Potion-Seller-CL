@@ -160,26 +160,26 @@
                     <tbody>
                     @foreach (var gamedata in Model.GameDatas)
                     {
-                    var formId = $"delete-form-{gamedata.GameDataId}";
-                    <tr>
-                        <td>@gamedata.GameDataId</td>
-                        <td>@gamedata.Gold</td>
-                        <td>@gamedata.UserName</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a asp-page="Update/GamaDataUpdate" asp-route-id="@gamedata.GameDataId" title="Mettre à jour" class="btn btn-dark me-2">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <form id="@formId" method="post" asp-page-handler="Delete">
-                                    <input type="hidden" name="id" value="@gamedata.GameDataId"/>
-                                    <input type="hidden" name="type" value="gamedata"/>
-                                    <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                        var formId = $"delete-form-{gamedata.GameDataId}";
+                        <tr>
+                            <td>@gamedata.GameDataId</td>
+                            <td>@gamedata.Gold</td>
+                            <td>@gamedata.UserId</td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <a asp-page="Update/GameDataUpdate" asp-route-id="@gamedata.GameDataId" title="Mettre à jour" class="btn btn-dark me-2">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form id="@formId" method="post" asp-page-handler="Delete">
+                                        <input type="hidden" name="id" value="@gamedata.GameDataId"/>
+                                        <input type="hidden" name="type" value="gamedata"/>
+                                        <button type="button" class="btn btn-dark" onclick="confirmDelete('@formId')">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
                     }
                     </tbody>
                 </table>

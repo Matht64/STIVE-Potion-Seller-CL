@@ -1,10 +1,9 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using STIVE.CL.DTOs;
 
-namespace STIVE.CL.Pages;
+namespace STIVE.CL.Pages.Update;
 
 public class UserUpdateModel : PageModel
 {

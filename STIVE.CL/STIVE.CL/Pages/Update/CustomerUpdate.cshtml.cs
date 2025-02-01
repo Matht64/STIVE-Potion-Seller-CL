@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using STIVE.CL.DTOs;
 
-namespace STIVE.CL.Pages;
+namespace STIVE.CL.Pages.Update;
 
 public class CustomerUpdateModel : PageModel
 {

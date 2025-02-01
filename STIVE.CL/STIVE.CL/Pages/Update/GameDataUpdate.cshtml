@@ -1,14 +1,21 @@
 @page
-@model STIVE.CL.Pages.Add.AddGameDataModel
+@model STIVE.CL.Pages.Update.GameDataUpdateModel
 
 @{
-ViewData["Title"] = "Ajouter une sauvegarde";
+ViewData["Title"] = "Modifier la sauvegarde";
 }
 
-<h1>Ajouter une sauvegarde</h1>
+<h1>Modifier la sauvegarde</h1>
 
 <div id="gamedataFormContainer">
     <form method="post">
+        <input type="hidden" asp-for="GameData.GameDataId" />
+
+        <div class="form-group">
+            <label asp-for="GameData.Gold">Nombre de Gold</label>
+            <input asp-for="GameData.Gold" class="form-control" required />
+            <span asp-validation-for="GameData.Gold" class="text-danger"></span>
+        </div>
         <div class="form-group">
             <label asp-for="GameData.UserId">Utilisateur associé</label>
             <select asp-for="GameData.UserId" class="form-control" required >
@@ -20,6 +27,7 @@ ViewData["Title"] = "Ajouter une sauvegarde";
             <span asp-validation-for="GameData.UserId" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-success">Ajouter</button>
+
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
     </form>
 </div>

@@ -8,6 +8,8 @@ public class GameDataDto
     public int GameDataId { get; set; }
     [JsonPropertyName("gold")]
     public int Gold { get; set; }
-    [JsonPropertyName("userName")]
-    public string UserName { get; set; }
+    [JsonPropertyName("userId")]
+    public string UserId { get; set; }
+    /*[JsonPropertyName("userName")]
+    public string UserName { get; set; }*/
 }
