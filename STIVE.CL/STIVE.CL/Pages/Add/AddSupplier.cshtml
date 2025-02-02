@@ -22,6 +22,7 @@ ViewData["Title"] = "Ajouter un fournisseur";
         <div class="form-group">
             <label asp-for="Supplier.PotionId">Potion associée</label>
             <select asp-for="Supplier.PotionId" class="form-control" required >
+                <option value="">--Nom de la potion--</option>
                 @foreach (var potion in Model.Potions)
                 {
                 <option value="@potion.PotionId">@potion.PotionName</option>

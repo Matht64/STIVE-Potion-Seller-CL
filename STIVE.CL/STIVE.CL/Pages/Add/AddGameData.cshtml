@@ -12,6 +12,7 @@ ViewData["Title"] = "Ajouter une sauvegarde";
         <div class="form-group">
             <label asp-for="GameData.UserId">Utilisateur associé</label>
             <select asp-for="GameData.UserId" class="form-control" required >
+                <option value="">--Nom de l'utilisateur--</option>
                 @foreach (var user in Model.Users)
                 {
                 <option value="@user.UserId">@user.UserName</option>

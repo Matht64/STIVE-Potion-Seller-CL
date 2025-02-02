@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace STIVE.CL.Pages;
 
-public class BoutiqueModel : PageModel
+public class GameModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
 
-    public BoutiqueModel(ILogger<IndexModel> logger)
+    public GameModel(ILogger<IndexModel> logger)
     {
         _logger = logger;
     }

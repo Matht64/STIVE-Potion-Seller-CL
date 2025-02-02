@@ -20,7 +20,7 @@
             <ul class="navbar-nav me-auto ms-auto d-flex w-75">
                 <div class="navbar-left d-lg-flex justify-content-lg-end w-100">
                     <li class="nav-item align-content-end">
-                        <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Jeu" ? "active" : "")" asp-area="" asp-page="/Jeu">Le jeu</a>
+                        <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Game" ? "active" : "")" asp-area="" asp-page="/Game">Le jeu</a>
                     </li>
                     <li class="nav-item align-content-end">
                         <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Classement" ? "active" : "")" asp-area="" asp-page="/Classement">Classement</a>
@@ -34,7 +34,7 @@
                 <div class="navbar-right d-lg-flex justify-content-lg-between w-100">
                     <div class="navbar-right-left d-lg-flex justify-content-start">
                         <li class="nav-item align-content-end">
-                            <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Boutique" ? "active" : "")" asp-area="" asp-page="/Boutique">Boutique</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Shop" ? "active" : "")" asp-area="" asp-page="/Shop">Boutique</a>
                         </li>
                         <li class="nav-item align-content-end">
                             <a class="nav-link @(ViewContext.RouteData.Values["page"].ToString() == "/Admin" ? "active" : "")" asp-area="" asp-page="/Admin">Admin</a>

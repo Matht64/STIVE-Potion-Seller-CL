@@ -79,3 +79,28 @@ p {
   display: block;
   opacity: 1;
 }
+
+.bonus-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bonus-image {
+  width: 100%; /* Ajuste l'image à la taille du conteneur */
+  height: auto;
+  display: block;
+}
+
+.bonus-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+}

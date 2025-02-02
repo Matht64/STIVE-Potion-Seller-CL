@@ -1,0 +1,64 @@
+@page
+@model STIVE.CL.Pages.ShopModel
+
+@{
+    ViewData["Title"] = "Boutique";
+}
+
+<div class="text-center" xmlns="http://www.w3.org/1999/html">
+    <div class="image-container position-relative pt-5 pb-5">
+        <img src="image/Table.png" class="img-fluid" alt="Livre" style="width: 100%;"/>
+        <div class="position-absolute overlay-div" style="top: 12%; left: 6%; width: 87%; height: 82%;">
+            <h2 class="text-decoration-underline">Boutique</h2>
+            <div class="form-group">
+                <label for="gameDataSelect">Sélectionner une sauvegarde :</label>
+                <select id="gameDataSelect" asp-for="GameDataId" name="GameDataId" class="form-control" onchange="updateGameDataId()">
+                    <option value="">--Numéro de la sauvegarde--</option>
+                    @foreach (var gamedata in Model.GameDatas)
+                    {
+                        <option value="@gamedata.GameDataId">@gamedata.GameDataId</option>
+                    }
+                </select>
+                <span asp-validation-for="GameDataId" class="text-danger"></span>
+            </div>
+            <div class="row">
+                @foreach (var bonus in Model.Bonus)
+                {
+                <div class="col-md-4 mb-4">
+                    <div class="bonus-container">
+                        <img src="image/PaperCarre.png" class="bonus-image" alt="Paper Background">
+                        <div class="bonus-content">
+                            <h2 class="card-title text-center">@bonus.BonusName</h2>
+                            <p class="card-text text-center" id="price-@bonus.BonusId">@bonus.BonusPrice €</p>
+                            <form method="post" asp-page-handler="AddToCart">
+                                <input type="hidden" name="BonusId" value="@bonus.BonusId"/>
+                                <input type="hidden" name="GameDataId" id="gameDataId" asp-for="GameDataId"/>
+                                <input type="hidden" name="UserId" value="@Model.UserId"/>
+                                <div class="form-group d-flex">
+                                    <input type="number" name="Quantity" min="1" value="1" id="quantity-@bonus.BonusId" class="form-control w-50" oninput="updatePrice(@bonus.BonusPrice.ToString("F2").Replace(',', '.'), @bonus.BonusId)"/>
+                                    <button type="submit" class="btn btn-dark w-40">Ajouter au panier</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function updatePrice(price, bonusId) {
+        let quantity = document.getElementById('quantity-'+bonusId).value;
+        let totalPrice = quantity * price;
+        document.getElementById('price-'+bonusId).textContent = totalPrice.toFixed(2) + " €";
+    }
+    
+    function updateGameDataId(){
+        var selectedGameDataId = document.getElementById('gameDataSelect').value;
+        var gameDataIdFields = document.querySelectorAll('[id="gameDataId"]');
+        gameDataIdFields.forEach(function (field){
+            field.value = selectedGameDataId;
+        });
+    }
+</script>
