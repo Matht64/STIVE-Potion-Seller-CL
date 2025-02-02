@@ -17,6 +17,11 @@ ViewData["Title"] = "Modifier la bonus";
             <span asp-validation-for="Bonus.BonusName" class="text-danger"></span>
         </div>
         <div class="form-group">
+            <label asp-for="Bonus.Description">Description du bonus</label>
+            <input asp-for="Bonus.Description" class="form-control" />
+            <span asp-validation-for="Bonus.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
             <label asp-for="Bonus.BonusDuration">Durée du bonus</label>
             <input asp-for="Bonus.BonusDuration" class="form-control" />
             <span asp-validation-for="Bonus.BonusDuration" class="text-danger"></span>

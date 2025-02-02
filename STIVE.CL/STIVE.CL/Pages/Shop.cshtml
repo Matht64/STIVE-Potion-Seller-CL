@@ -21,7 +21,7 @@
                 </select>
                 <span asp-validation-for="GameDataId" class="text-danger"></span>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 @foreach (var bonus in Model.Bonus)
                 {
                 <div class="col-md-4 mb-4">
@@ -29,14 +29,16 @@
                         <img src="image/PaperCarre.png" class="bonus-image" alt="Paper Background">
                         <div class="bonus-content">
                             <h2 class="card-title text-center">@bonus.BonusName</h2>
-                            <p class="card-text text-center" id="price-@bonus.BonusId">@bonus.BonusPrice €</p>
+                        <div class="card-text text-center fs-6">@bonus.Description</div>
+                        <div class="card-text text-center fs-6">pendant @bonus.BonusDuration H</div>
+                            <div class="card-text text-center fs-4" id="price-@bonus.BonusId">@bonus.BonusPrice €</div>
                             <form method="post" asp-page-handler="AddToCart">
                                 <input type="hidden" name="BonusId" value="@bonus.BonusId"/>
                                 <input type="hidden" name="GameDataId" id="gameDataId" asp-for="GameDataId"/>
                                 <input type="hidden" name="UserId" value="@Model.UserId"/>
-                                <div class="form-group d-flex">
-                                    <input type="number" name="Quantity" min="1" value="1" id="quantity-@bonus.BonusId" class="form-control w-50" oninput="updatePrice(@bonus.BonusPrice.ToString("F2").Replace(',', '.'), @bonus.BonusId)"/>
-                                    <button type="submit" class="btn btn-dark w-40">Ajouter au panier</button>
+                                <div class="form-group d-flex align-items-center">
+                                    <input type="number" name="Quantity" min="1" value="1" id="quantity-@bonus.BonusId" class="form-control text-center me-2 w-50 h-50" oninput="updatePrice(@bonus.BonusPrice.ToString("F2").Replace(',', '.'), @bonus.BonusId)"/>
+                                    <button type="submit" class="btn btn-dark flex-grow-1">Ajouter au panier</button>
                                 </div>
                             </form>
                         </div>

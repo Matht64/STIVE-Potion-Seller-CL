@@ -8,6 +8,8 @@ public class BonusDto
     public int BonusId { get; set; }
     [JsonPropertyName("name")]
     public string BonusName { get; set; }
+    [JsonPropertyName("description")]
+    public string Description { get; set; }
     [JsonPropertyName("duration")]
     public int BonusDuration { get; set; }
     [JsonPropertyName("price")]
