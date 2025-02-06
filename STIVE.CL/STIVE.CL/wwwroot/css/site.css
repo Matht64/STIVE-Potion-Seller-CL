@@ -89,7 +89,7 @@ p {
 }
 
 .bonus-image {
-  width: 100%; /* Ajuste l'image à la taille du conteneur */
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -103,4 +103,10 @@ p {
   text-align: center;
   padding: 15px;
   border-radius: 10px;
+}
+
+.items-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 720px;
 }

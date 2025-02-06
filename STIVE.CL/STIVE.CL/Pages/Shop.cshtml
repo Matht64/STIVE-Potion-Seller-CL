@@ -13,6 +13,40 @@
                 <img src="image/Bourse.png" class="img-fluid" alt="Bourse" style="position: absolute; top: 0px; right: 10px; width: 100px; cursor: pointer;"/>
             </a>
             <h2 class="text-decoration-underline">Boutique</h2>
+            <div class="container mt-4">
+                <!-- Barre de recherche -->
+                <div class="row mb-4">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un bonus..." oninput="filterProducts()">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <label for="priceFilter">Filtrer par prix :</label>
+                                <select id="priceFilter" class="form-control" onchange="filterProducts()">
+                                    <option value="">--Prix--</option>
+                                    <option value="low">Moins de 10€</option>
+                                    <option value="medium">10€ - 50€</option>
+                                    <option value="high">Plus de 50€</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="durationFilter">Filtrer par durée :</label>
+                                <select id="durationFilter" class="form-control" onchange="filterProducts()">
+                                    <option value="">--Durée--</option>
+                                    <option value="short">Moins de 3 heures</option>
+                                    <option value="medium">3 - 5 heures</option>
+                                    <option value="long">Plus de 5 heures</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="gameDataSelect">Sélectionner une sauvegarde :</label>
                 <select id="gameDataSelect" asp-for="GameDataId" name="GameDataId" class="form-control" onchange="updateGameDataId()">
@@ -24,30 +58,32 @@
                 </select>
                 <span asp-validation-for="GameDataId" class="text-danger"></span>
             </div>
-            <div class="row mt-3">
-                @foreach (var bonus in Model.Bonus)
-                {
-                <div class="col-md-4 mb-4">
-                    <div class="bonus-container">
-                        <img src="image/PaperCarre.png" class="bonus-image" alt="Paper Background">
-                        <div class="bonus-content">
-                            <h2 class="card-title text-center">@bonus.BonusName</h2>
-                        <div class="card-text text-center fs-6">@bonus.Description</div>
-                        <div class="card-text text-center fs-6">pendant @bonus.BonusDuration H</div>
-                            <div class="card-text text-center fs-4" id="price-@bonus.BonusId">@bonus.BonusPrice €</div>
-                            <form method="post" asp-page-handler="AddToCart">
-                                <input type="hidden" name="BonusId" value="@bonus.BonusId"/>
-                                <input type="hidden" name="GameDataId" id="gameDataId" asp-for="GameDataId"/>
-                                <input type="hidden" name="UserId" value="@Model.UserId"/>
-                                <div class="form-group d-flex align-items-center">
-                                    <input type="number" name="Quantity" min="1" value="1" id="quantity-@bonus.BonusId" class="form-control text-center me-2 w-50 h-50" oninput="updatePrice(@bonus.BonusPrice.ToString("F2").Replace(',', '.'), @bonus.BonusId)"/>
-                                    <button type="submit" class="btn btn-dark flex-grow-1">Ajouter au panier</button>
+            <div class="items-container">
+                <div class="row mt-3">
+                    @foreach (var bonus in Model.Bonus)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="bonus-container">
+                                <img src="image/PaperCarre.png" class="bonus-image" alt="Paper Background">
+                                <div class="bonus-content">
+                                    <h2 class="card-title text-center">@bonus.BonusName</h2>
+                                    <div class="card-description text-center fs-6">@bonus.Description</div>
+                                    <div class="card-duration text-center fs-6">pendant @bonus.BonusDuration H</div>
+                                    <div class="card-price text-center fs-4" id="price-@bonus.BonusId">@bonus.BonusPrice €</div>
+                                    <form method="post" asp-page-handler="AddToCart">
+                                        <input type="hidden" name="BonusId" value="@bonus.BonusId"/>
+                                        <input type="hidden" name="GameDataId" id="gameDataId" asp-for="GameDataId"/>
+                                        <input type="hidden" name="UserId" value="@Model.UserId"/>
+                                        <div class="form-group d-flex align-items-center">
+                                            <input type="number" name="Quantity" min="1" value="1" id="quantity-@bonus.BonusId" class="form-control text-center me-2 w-50 h-50" oninput="updatePrice(@bonus.BonusPrice.ToString("F2").Replace(',', '.'), @bonus.BonusId)"/>
+                                            <button type="submit" class="btn btn-dark flex-grow-1">Ajouter au panier</button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
-                }
             </div>
         </div>
     </div>
@@ -64,6 +100,42 @@
         var gameDataIdFields = document.querySelectorAll('[id="gameDataId"]');
         gameDataIdFields.forEach(function (field){
             field.value = selectedGameDataId;
+        });
+    }
+    
+    function filterProducts() {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const priceFilter = document.getElementById("priceFilter").value;
+        const durationFilter = document.getElementById("durationFilter").value;
+
+        const bonusItems = document.querySelectorAll(".bonus-container");
+
+        bonusItems.forEach(function (item) {
+            const bonusName = item.querySelector(".card-title").textContent.toLowerCase();
+            const description = item.querySelector(".card-description").textContent.toLowerCase();
+            const price = parseFloat(item.querySelector(".card-price").textContent.replace(' €', ''));
+            const duration = parseInt(item.querySelector(".card-duration").textContent.match(/\d+/)[0]);
+
+
+            let match = true;
+
+            if (searchTerm && !bonusName.includes(searchTerm) && !description.includes(searchTerm)) {
+                match = false;
+            }
+
+            if (priceFilter === "low" && price >= 10) match = false;
+            if (priceFilter === "medium" && (price < 10 || price > 50)) match = false;
+            if (priceFilter === "high" && price <= 50) match = false;
+
+            if (durationFilter === "short" && duration >= 3) match = false;
+            if (durationFilter === "medium" && (duration < 3 || duration > 5)) match = false;
+            if (durationFilter === "long" && duration <= 5) match = false;
+
+            if (match) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
         });
     }
 </script>
