@@ -37,13 +37,49 @@ public class CartModel : PageModel
         return Page();
     }
     
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostRemoveItemAsync()
     {
         var requestData = new { userId = UserId, bonusId = BonusId, gameDataId = GameDataId };
         var json = JsonSerializer.Serialize(requestData);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PostAsync("http://localhost:5294/api/Cart/remove", content);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            ModelState.AddModelError(string.Empty, "Erreur lors de la suppression.");
+        }
+
+        return RedirectToPage();
+    }
+
+    public async Task<IActionResult> OnPostClearCartAsync()
+    {
+        var requestData = new { userId = UserId, gameDataId = GameDataId };
+        var json = JsonSerializer.Serialize(requestData);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var request = new HttpRequestMessage(HttpMethod.Delete, "http://localhost:5294/api/Cart/clear")
+        {
+            Content = content
+        };
+        
+        var response = await _httpClient.SendAsync(request);
+        if (!response.IsSuccessStatusCode)
+        {
+            ModelState.AddModelError(string.Empty, "Erreur lors de la suppression.");
+        }
+
+        return RedirectToPage();
+    }
+    
+    public async Task<IActionResult> OnPostValidateAsync()
+    {
+        var requestData = new { userId = UserId, gameDataId = GameDataId };
+        var json = JsonSerializer.Serialize(requestData);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await _httpClient.PostAsync("http://localhost:5294/api/Cart/validate", content);
 
         if (!response.IsSuccessStatusCode)
         {

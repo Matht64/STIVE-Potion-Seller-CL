@@ -39,7 +39,7 @@
                                         <td>@item.Quantity</td>
                                         <td>@( (item.Quantity * item.BonusPrice).ToString("F2") ) €</td>
                                         <td>
-                                            <form method="post">
+                                            <form method="post" asp-page-handler="RemoveItem">
                                                 <input type="hidden" name="UserId" value="@Model.UserId" />
                                                 <input type="hidden" name="BonusId" value="@item.BonusId" />
                                                 <input type="hidden" name="GameDataId" value="@cart.GameDataId" />
@@ -52,20 +52,26 @@
                                 }
                                 </tbody>
                             </table>
-                            <button class="btn btn-warning mt-3" onclick="clearCart(@cart.GameDataId)">Vider le panier</button>
+                            <div class="d-flex justify-content-around">
+                                <form method="post" asp-page-handler="Validate" class="d-inline-block">
+                                    <input type="hidden" name="UserId" value="@Model.UserId" />
+                                    <input type="hidden" name="GameDataId" value="@cart.GameDataId" />
+                                    <button type="submit" class="btn btn-warning mt-3" onclick="return confirm('Voulez-vous vraiment valider ce panier ?');">Valider le panier</button>
+                                </form>
+                                <form method="post" asp-page-handler="ClearCart" class="d-inline-block">
+                                    <input type="hidden" name="UserId" value="@Model.UserId" />
+                                    <input type="hidden" name="GameDataId" value="@cart.GameDataId" />
+                                    <button type="submit" class="btn btn-warning mt-3" onclick="return confirm('Voulez-vous vraiment supprimer ce panier ?');">Vider le panier</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 }
             }
             else
             {
-                <p class="text-warning">Aucun panier trouvé</p>
+                <p class="text">Aucun panier trouvé</p>
             }
         </div>
     </div>
 </div>
-<script>
-    function clearCart(gameDataId) {
-        alert(`Vider le panier pour la sauvegarde ${gameDataId}`);
-    }
-</script>
