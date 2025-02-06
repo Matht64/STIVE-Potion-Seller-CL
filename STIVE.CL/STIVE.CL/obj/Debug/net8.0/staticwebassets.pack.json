@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets/image/Book.png"
     },
     {
+      "Id": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/Bourse.png",
+      "PackagePath": "staticwebassets/image/Bourse.png"
+    },
+    {
       "Id": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/Logo.png",
       "PackagePath": "staticwebassets/image/Logo.png"
     },

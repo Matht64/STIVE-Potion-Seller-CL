@@ -21,7 +21,7 @@ public class ShopModel : PageModel
     [BindProperty]
     public int GameDataId { get; set; }
     [BindProperty]
-    public CartItemDto CartItem { get; set; }
+    public AddCartItemDto AddCartItem { get; set; }
     public async Task<IActionResult> OnGetAsync()
     {
         UserId = "1f43468c-c467-4cdd-a02d-29bd888e09c8";
@@ -48,7 +48,7 @@ public class ShopModel : PageModel
         if (!ModelState.IsValid)
             return Page();
         
-        var jsonData = JsonSerializer.Serialize(CartItem);
+        var jsonData = JsonSerializer.Serialize(AddCartItem);
         var content  = new StringContent(jsonData, Encoding.UTF8, "application/json");
         var response = await _httpClient.PostAsync("http://localhost:5294/api/Cart/add", content);
         

@@ -1,0 +1,71 @@
+@page
+@model STIVE.CL.Pages.CartModel
+
+@{
+    ViewData["Title"] = "Panier";
+}
+
+<div class="text-center" xmlns="http://www.w3.org/1999/html">
+    <div class="image-container position-relative pt-5 pb-5">
+        <img src="image/Table.png" class="img-fluid" alt="Livre" style="width: 100%;"/>
+        <div class="position-absolute overlay-div" style="top: 12%; left: 6%; width: 87%; height: 82%;">
+            <a asp-page="/Shop" id="cartButton">
+                <img src="image/Bourse.png" class="img-fluid" alt="Bourse" style="position: absolute; top: 0px; right: 10px; width: 100px; cursor: pointer;"/>
+            </a>
+            <h2 class="text-decoration-underline mb-5">Panier</h2>
+            @if (Model.UserCarts.Any())
+            {
+                @foreach (var cart in Model.UserCarts)
+                {
+                    <div class="card mb-4">
+                        <div class="card-header bg-dark text-white">
+                            <h4>Panier - Sauvegarde @cart.GameDataId</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered text-center">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>Bonus</th>
+                                    <th>Quantité</th>
+                                    <th>Prix</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in cart.CartItems)
+                                {
+                                    <tr>
+                                        <td>@item.BonusName</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@( (item.Quantity * item.BonusPrice).ToString("F2") ) €</td>
+                                        <td>
+                                            <form method="post">
+                                                <input type="hidden" name="UserId" value="@Model.UserId" />
+                                                <input type="hidden" name="BonusId" value="@item.BonusId" />
+                                                <input type="hidden" name="GameDataId" value="@cart.GameDataId" />
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Voulez-vous vraiment supprimer cet article du panier ?');">
+                                                    Supprimer
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                            <button class="btn btn-warning mt-3" onclick="clearCart(@cart.GameDataId)">Vider le panier</button>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-warning">Aucun panier trouvé</p>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    function clearCart(gameDataId) {
+        alert(`Vider le panier pour la sauvegarde ${gameDataId}`);
+    }
+</script>
