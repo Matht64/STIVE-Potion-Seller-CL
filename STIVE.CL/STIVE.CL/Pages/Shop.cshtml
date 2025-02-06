@@ -17,9 +17,7 @@
                 <!-- Barre de recherche -->
                 <div class="row mb-4">
                     <div class="col-md-6 offset-md-3">
-                        <div class="input-group">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un bonus..." oninput="filterProducts()">
-                        </div>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un bonus..." oninput="filterProducts()">
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -132,9 +130,9 @@
             if (durationFilter === "long" && duration <= 5) match = false;
 
             if (match) {
-                item.style.display = "block";
+                item.parentElement.style.display = "block";
             } else {
-                item.style.display = "none";
+                item.parentElement.style.display = "none";
             }
         });
     }
