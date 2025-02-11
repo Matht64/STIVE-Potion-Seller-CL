@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0baI2SaPuESceOYeMRUgepJ6bHQaoUC5TldQHjiHMc8=",
+  "Hash": "/Po5w0cdDd1Mj801y0a0gIOpoiOiCycS11C+PL4fOss=",
   "Source": "STIVE.CL",
   "BasePath": "_content/STIVE.CL",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/image/Bourse.png"
+    },
+    {
+      "Identity": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/jeu.png",
+      "SourceId": "STIVE.CL",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/",
+      "BasePath": "_content/STIVE.CL",
+      "RelativePath": "image/jeu.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/image/jeu.png"
     },
     {
       "Identity": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/Logo.png",

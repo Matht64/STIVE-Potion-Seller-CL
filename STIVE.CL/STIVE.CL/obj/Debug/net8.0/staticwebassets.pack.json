@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets/image/Title.png"
     },
     {
+      "Id": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/image/jeu.png",
+      "PackagePath": "staticwebassets/image/jeu.png"
+    },
+    {
       "Id": "/Users/terrygyselings/Documents/STIVE/STIVE-Potion-Seller-CL/STIVE.CL/STIVE.CL/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
